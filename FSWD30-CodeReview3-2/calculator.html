@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Insurance Company | Prices</title>
+  <link rel="stylesheet" type="text/css" href="base.css">
+  <link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+<body>
+  <header>
+    <h1>Insurance <b>Company</b></h1>
+  </header>
+  <nav>
+    <a href="car-insurance.html">Home</a>
+    <a class="active" href="calculator.html">Prices</a>
+  </nav>
+  <section>
+    <ul>
+      <li>
+        <span>
+          Your  Name:
+        </span>
+        <!--placeholder kann man für den Text innerhalb Input Blocks verwenden.-->
+         <input id="name" type="text" placeholder="enter here" value="John Doe"/>
+      </li>
+      <li>
+        <span>
+          Age:
+        </span>
+        <input id="age" type="number" placeholder="enter here" value="37"/>
+      </li>
+      <li>
+        <span>
+          Country:
+        </span>
+        <select id="country" value="germany">
+          <option value="austria">Austria</option>
+          <option value="ataly">Italy</option>
+          <option value="germany">Germany</option>
+        </select>
+      </li>
+      <li>
+        <span>
+          Horsepower:
+        </span>
+        <input id="horsepower" type="number" placeholder="enter here" value="15" />
+      </li>
+    </ul>
+    <button onclick="calc()">
+      <b>calculate</b>
+    </button>
+  </section>
+  <footer>
+      <p id="footer">
+        Fill up the form to calculate your insurance cost.
+      </p>
+  </footer>
+  <script>
+  // function to be called
+  function calc() {
+    // use value 'John' is element is null (not found in the value or null value)
+    // You may want to do something a bit more clever like using if to text and fire an error
+    // if the input has no value
+    const name = document.getElementById("name").value || 'John';
+    const age = document.getElementById("age").value || 35;
+    const country = document.getElementById("country").value; // define by default
+    const horsePower = document.getElementById("horsepower").value || 2;
+    let result = horsePower * 100 / age + 150;
+    // using Template literals, smater strings
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+    document.getElementById("footer").innerHTML = `Hi ${name}, The insurance of your car will be <b>${Math.ceil(result)}€</b>`;
+  }
+  </script>
+</body>
+</html>
